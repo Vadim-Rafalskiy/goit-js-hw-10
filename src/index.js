@@ -21,12 +21,12 @@ refs.searchInput.addEventListener('input', debounce(onSearch, DEBOUNCE_DELAY));
 
 function onSearch(e) {
   const country = e.target.value.trim();
-
-  fetchCountries(country).then(foundCountries => {
-    countries = foundCountries;
-    console.log(countries);
-    render();
-  });
+  if (country !== '')
+    fetchCountries(country).then(foundCountries => {
+      countries = foundCountries;
+      console.log(countries);
+      render();
+    });
 }
 
 const render = () => {
